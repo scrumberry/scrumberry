@@ -1,0 +1,79 @@
+<div id="jobForm" ng-show="showSetupForm" class="modal" role="dialog" tabindex="-1"	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="modal-title">
+					<button class="close" ng-click="showSetupForm = false" data-dismiss="modal">x</button>
+					<h3>{{(updateForm) ?'Job properties':'Add a new job'}}</h3>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div id="form-job-properties" class="form-inline" ng-show="!jenkinsSearchMode">
+					<div ng-show="!updateForm && !jenkinsSearchMode" class="job-properties-instructions">
+						Enter job properties or choose to query a Jenkins server <a ng-click="jenkinsSearchMode = true">here</a>
+					</div>
+					<label class="form-line" id="job-name">Name :</label>
+					<div class="form-group form-line">
+						<div class="col-xs-12 no-padding">
+							<input id="job-name" class="form-control"
+								ng-model="selectedJob.name" />
+						</div>
+					</div>
+					<label class="form-line" class="">API path :</label>
+					<div class="form-group form-line">
+						<div class="col-xs-12 no-padding">
+							<input class="form-control" ng-model="selectedJob.apiUrl"
+								placeholder="Url of the Jenkins server" />
+						</div>
+					</div>
+					<div class="form-group form-line">
+						<label class="form-line" for="job-status">Under alarm :</label>
+						<div class="col-xs-4">
+							<div ng-class="[{true:'glyphicon-bell selected', false:'glyphicon-ban-circle unselected'}[selectedJob.alarm=='ON'] , 'glyphicon jenkins-job-alarm']"
+								ng-click="changeAlarm(selectedJob)"></div>
+						</div>
+					</div>
+				</div>
+				<div id="form-jenkins-server" class="form-inline" ng-show="!updateForm && jenkinsSearchMode">
+					<div class="job-properties-instructions">
+						Enter the Jenkins URL server you want to query or choose to enter job properties manually <a ng-click="jenkinsSearchMode = false">here</a>
+					</div>
+					<label class="form-line" id="job-name">URL :</label>
+					<div class="form-group form-line">
+						<div class="col-xs-12 no-padding">
+							<input id="jenkins-url" class="form-control" ng-model="jenkinsUrl" placeholder="" />
+						</div>
+					</div>
+				</div>
+				<div id="form-jenkins-jobs" class="form-inline"	ng-show="jenkinsJobList.length>0">
+					<p><label class="jenkins-instruction-label">Select the job(s) you want to manage :</label></p>
+					<p><div class="glyphicon glyphicon-hand-down jenkins-job-hand"></div></p>
+					<div id="remote-job-list" ng-repeat="jenkinsJob in jenkinsJobList">
+						<div class="jenkins-job-line">
+							<div ng-class="{true:'select-job-disabled', false:'select-job-enabled'}[jenkinsJob.alreadySelected]" >
+								<input type="checkbox" ng-disabled="jenkinsJob.alreadySelected" class="jenkins-joblist-checkbox" ng-model="jenkinsJob.selected" />
+								<span class="jenkins-joblist-jobname">{{jenkinsJob.name}}&nbsp;</span>
+								<span class="jenkins-joblist-already-selected" ng-show="jenkinsJob.alreadySelected">(this job is already selected)</span>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div ng-show="jenkinsSearchMode">
+					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="showSetupForm = false">Close</button>
+					<button type="button" ng-show="jenkinsJobList.length>0" class="btn btn-primary" ng-click="addSelectedJobs()">Add selected job(s)</button>
+					<button type="button" ng-show="jenkinsSearchMode" ng-click="connectToJenkins()" class="btn btn-primary">Connect</button>
+				</div>
+				<div ng-show="!jenkinsSearchMode">
+					<div ng-show="updateForm">
+						<button type="button" ng-show="removeConfirmationLevel==0" class="btn btn-warning btn-remove-job" ng-click="confirmRemoval()">Remove</button>
+						<button type="button" ng-show="removeConfirmationLevel==1" class="btn btn-danger btn-remove-job" ng-click="removeJob(selectedJob)">Sure ? Remove it ?</button>
+					</div>	
+					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="showSetupForm = false">Close</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveJob(selectedJob)">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

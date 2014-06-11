@@ -1,0 +1,281 @@
+h1 {
+	font-size: 22px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-align: left;
+}
+h2 {
+	font-size: 14px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+li {
+	display: block;
+}
+.jenkins-not-connected,
+.jenkins-connected {
+	font-size: 9px;
+	float: left;
+	padding-top: 12px;	
+}
+.jenkins-connected {
+	color: rgb(57, 214, 50);
+}
+.jenkins-not-connected {
+	color: red;
+}
+.jenkins-in-error {
+	color: red;
+	float:right;
+	font-size: 24px;
+	/* margin-top: -32px; */
+}
+.job-widget {
+	float: left;
+}
+.jenkins-job-linedesc {
+	/* height: 26px;
+	 width: 328px; */
+}
+.jenkins-job-name {
+	float: left;
+	height: 26px;
+}
+.jenkins-job-setup {
+	cursor: pointer;
+	font-size: 18px;
+	margin-right: 12px;
+}
+.jenkins-job-server {
+	float: left;
+	width: 308px;
+}
+.jenkins-job-alarm {
+	float: left;
+	font-size: 18px;
+	margin-right: -1px;
+	margin-left: 4px;	
+}
+.jenkins-job-apiInfos {
+	font-size: 10px;
+	width: 330px;
+}
+.jenkins-job-indicators {
+	float: right;	
+}
+.jenkins-job-label {
+	float: left;
+	font-size: 12px;
+	width: 68px;
+}
+.jenkins-job-value {
+	float: left;
+	font-size: 12px;
+	padding-top: 1px;
+	width: 420px;
+}
+.jenkins-job-status-Success,
+.jenkins-job-status-Failed,
+.jenkins-job-status-Unknown {
+	background-size: 18px 18px;
+	float: right;	
+	height: 18px;
+	margin-right: 4px;
+	margin-left: 4px;
+	width: 18px;		
+}	
+.jenkins-job-status-Success {
+	background-image: url("../img/success.png");
+}
+.jenkins-job-status-Failed {
+	background-image: url("../img/failed.png");
+}
+.jenkins-job-status-Unknown {
+	background-image: url("../img/unknown.png");
+}
+.panel-primary > .panel-heading {
+	/* background-color: #000000; */
+	border-color: #000000;
+	color: #ffffff;
+	height: 42px;
+	/* width: 358px; */
+}
+.panel-primary {
+	border-color: #000000;
+}
+.panel-body {
+	padding: 10px;
+}
+.form-content {
+	background-color: #f6f6f6;
+  	-webkit-border-radius: 4px;
+  	-moz-border-radius: 4px;
+  	border-radius: 4px;
+  	border-style: solid;
+  	border-color: #cccccc;
+  	border-width: 1px;
+  	display: block;
+  	width: 460px;
+  	z-index:0;
+}
+.form-title {
+	float: left;
+	font-family: "Helvetica";
+	font-size: 16px;
+	margin-bottom: 8px;
+	margin-top: 8px;
+	text-align: center;	
+	width: 100%;
+}
+.modal {
+	display: block;
+}
+/*
+.modal-dialog {	
+	width: 750px;
+}
+*/
+.modal-header {
+	padding-bottom: 12px;
+}
+.modal-footer {
+	padding-bottom: 12px;
+}
+.modal-header, .modal-body, .modal-footer {
+	border-bottom: none;
+	border-top: none;
+	padding-top: 0px;	
+}
+.no-padding {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.form-line {
+	margin-bottom: 2px;
+	margin-top: 2px;
+	vertical-align: middle;
+	width: 100%;
+}
+.form-inline .form-control {
+	width: 100%;
+}
+.width-xs {
+	width: 4px;
+}
+.selected {
+	border: 1px solid;
+  	-webkit-border-radius: 4px;
+  	-moz-border-radius: 4px;
+  	border-radius: 4px;
+  	cursor: pointer;
+	padding-bottom: 2px;
+	padding-left: 2px;	
+	padding-right: 20px;
+	padding-top: 2px;	
+}
+.unselected {	
+	border: 1px solid;
+	color: #e2e2e2;
+	cursor: pointer;
+  	-webkit-border-radius: 4px;
+  	-moz-border-radius: 4px;
+  	border-radius: 4px;	
+	padding-bottom: 2px;
+	padding-left: 2px;	
+	padding-right: 20px;
+	padding-top: 2px;	
+}
+.small-field-label {
+	color: #666666;
+	float: left;
+	font-size: 11px;
+	margin-top: -16px;
+}
+.command-bar {
+	float: left;
+	height: 36px;
+	margin-bottom: 12px;
+	margin-top: 8px;
+	width: 100%;
+}
+.command-button {
+	float: right;
+}
+.btn-remove-job {
+	float: left;
+}
+#jobForm a, #jobForm a:hover, #jobForm a:active {
+	cursor: pointer;
+	text-decoration: none
+}
+#form-jenkins-jobs {
+	margin-top: 12px;
+}
+#remote-job-list {
+	/*margin-top: 12x;*/
+}
+.jenkins-job-line {
+	padding-top: 2px;
+}
+.jenkins-joblist-checkbox {
+	font-size: 16px;
+}
+.jenkins-joblist-jobname {
+	font-size: 14px;
+	margin-left: 12px;
+}
+.jenkins-joblist-already-selected {
+	/* float: right; */
+}
+.select-job-disabled {
+	color: #c2c2c2;
+
+}
+.select-job-enabled {
+	color: #000000;	
+}
+.jenkins-job-hand {
+	
+}
+.jenkins-instruction-label {
+	margin-bottom: 0px;
+}
+.job-properties-instructions {
+	font-size: 14px;
+}
+.strong {
+	font-weight: bold;
+}
+
+
+/* ========= JENKINS DashBoard ============ */
+#jenkinsDashboard {
+	margin-bottom: 24px;
+	margin-top: 24px;
+	width: 280px;
+}
+#jenkinsDashboard .panel-heading {
+	text-align: center;
+}
+#jenkinsDashboard li {
+	padding: 2px;
+}
+#jenkinsDashboard .info-msg {
+	margin-left: 6px;
+}
+#jenkinsDashboard .job-name {
+	font-weight: normal;
+}
+#jenkinsDashboard .failed {
+	background-image: url(/jenkins/assets/img/failed.png);
+	background-size: 18px 18px;
+	float: right;	
+	height: 18px;
+	margin-right: 6px;
+	margin-left: 0px;
+	width: 18px;		
+}
+#jenkinsDashboard ul, ol {
+	margin-left: 4px;
+	padding-left: 0px;
+}

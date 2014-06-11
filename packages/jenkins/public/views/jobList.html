@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Managed Jenkins jobs</title>
+</head>
+<body>
+	<h1>Managed Jenkins jobs</h1>
+	<section data-ng-controller="JobDetailsController" data-ng-init="initForm()">
+		<nav class="command-bar"><button type="button" ng-click="addJob()" class="btn btn-primary command-button">Add a job</button></nav>
+		<jobdetail></jobdetail>		
+	</section>
+	<section data-ng-controller="JobListController"	data-ng-init="initPage()">			
+		<main class="container-fluid main-content">
+			<confirm></confirm>
+			<ul class="row">
+				<li ng-repeat="job in jobs">
+					<div class="col-xs-6 col-sm-6 job-widget">
+						<article class="panel panel-primary">
+							<header class="panel-heading">
+								<h2 class="jenkins-job-name">{{ job.name }}</h2>
+								<section class="jenkins-job-indicators">
+									<div ng-class="[{true:'glyphicon glyphicon-bell', false:''}[job.alarm=='ON'] , 'jenkins-job-alarm']"></div>
+								</section>
+							</header>
+							<section class="panel-body">
+								<dl class="jenkins-job-linedesc">
+									<dt class="jenkins-job-label">Api URL :</dt>
+									<dd class="jenkins-job-value">{{ job.apiUrl }}</dd>
+								</dl>
+								<dl class="jenkins-job-linedesc">
+									<nav type="button" ng-click="confirmRemoveJob(job)" class="glyphicon glyphicon-trash jenkins-job-setup jenkins-job-indicators"></nav>
+									<nav type="button" ng-click="editJob(job)" data-toggle="modal" 
+										data-target="#jobForm" class="glyphicon glyphicon-edit jenkins-job-setup jenkins-job-indicators">
+									</nav>
+								</dl>							
+							</section>
+						</article>
+					</div>
+				</li>
+			</ul>
+		</main>
+	</section>
+</body>
+</html>

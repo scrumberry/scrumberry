@@ -1,0 +1,12 @@
+<article id="jenkinsDashboard">
+	<section ng-class="{true:'panel panel-danger' , false:'panel panel-success'}[jenkinsInError]">
+		<header class="panel-heading"><h3 class="panel-title">Jenkins dashboard</h3></header>
+		<panel-body>
+			<p class="info-msg" ng-show='jenkinsInError'>Damned ! {{alarmsCount}} job{{ (alarmsCount>1) ? 's' : ''}} in error :</p>
+			<p class="info-msg" ng-show='!jenkinsInError'>Everything is alright</p>
+			<ol>
+				<li ng-repeat="alarmingJob in alarmingJobs"><label class="job-name">{{alarmingJob}}</label><div class="failed"/></div></li>
+			</ol>		
+		</panel-body>
+	</section>
+</article>
