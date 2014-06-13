@@ -8,7 +8,6 @@ angular.module('mean').directive('jenkinsDashboard', function () {
         templateUrl: 'jenkins/views/jenkinsDashboard.html',
         link: function (scope, elem, attrs) {
     		
-        	var alarmsCount = 0;
     		scope.alarmingJobs = [];
     		scope.alarmsCount = 0;
     		scope.jenkinsInError = false;
@@ -37,7 +36,7 @@ angular.module('mean').directive('jenkinsDashboard', function () {
     		});
     		
     		socket.on('JENKINS_JOB_STATUS_CHANGE', function(event) {
-    			if (event.data.lastBuild.number == event.data.lastFailedBuild.number) {
+    			if (event.data.lastBuild.number === event.data.lastFailedBuild.number) {
     				scope.addJobInAlarm(event.data);
     			} else {
     				scope.removeJobInAlarm(event.data);

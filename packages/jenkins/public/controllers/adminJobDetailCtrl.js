@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('mean').controller('JobDetailsController', ['$scope','$rootScope','$http','$location','Jobs','RemoteJenkins','JobListService', function($scope,$rootScope,$http,$location,Jobs,RemoteJenkins,JobListService) {
 
 	$scope.initForm = function initForm() {
@@ -13,7 +15,7 @@ angular.module('mean').controller('JobDetailsController', ['$scope','$rootScope'
 	};	
 	
 	$scope.changeAlarm = function changeAlarm(job) {
-		job.alarm = (job.alarm == 'ON' ? 'OFF' : 'ON');
+		job.alarm = (job.alarm === 'ON' ? 'OFF' : 'ON');
 	};
 	
 	$scope.saveJob = function saveJob(job) {
@@ -67,7 +69,7 @@ angular.module('mean').controller('JobDetailsController', ['$scope','$rootScope'
 	$scope.isJobAlreadySelected = function isJobAlreadySelected(url) {
 		var selected = false, index= 0;
 		while(index < JobListService.joblist.length && !selected) {
-			if (JobListService.joblist[index].apiUrl == url) {
+			if (JobListService.joblist[index].apiUrl === url) {
 				selected = true;
 			}
 			index++;
@@ -78,7 +80,7 @@ angular.module('mean').controller('JobDetailsController', ['$scope','$rootScope'
 	$scope.addSelectedJobs = function addSelectedJobs() {
 		for (var i= 0; i < $scope.jenkinsJobList.length ; i++) {
 			var job = $scope.jenkinsJobList[i];
-			if (job.selected == true) {
+			if (job.selected === true) {
 				 var newJob = new Jobs({
 			         name: job.name,
 			         apiUrl: job.url,
@@ -88,9 +90,9 @@ angular.module('mean').controller('JobDetailsController', ['$scope','$rootScope'
 			     newJob.$save(function(response) {
 			        	newJob._id = response._id;
 			        	$rootScope.$emit('JOB_CREATED_EVENT', newJob);
-			     });				
+			     });			
 			}
-		};
+		}
 		$scope.showSetupForm = false;
 	};
 	

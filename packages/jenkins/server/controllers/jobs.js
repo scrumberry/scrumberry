@@ -107,7 +107,7 @@ exports.getRemoteList = function(req, res) {
 	// Jenkins remote API dependency
 	var remote = require('./remote');	
 	remote.getRemoteJobs(url, function(resp) {	
-		if (resp!='') {
+		if (resp!=='') {
 			try {
 				res.send(resp);
 			} catch (err) {

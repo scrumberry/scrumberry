@@ -262,6 +262,7 @@ li {
 }
 #jenkinsDashboard .info-msg {
 	margin-left: 6px;
+	margin-top: 12px;
 }
 #jenkinsDashboard .job-name {
 	font-weight: normal;

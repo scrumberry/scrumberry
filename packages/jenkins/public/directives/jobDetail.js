@@ -6,7 +6,7 @@ angular.module('mean').directive('jobdetail', function () {
         replace: 'true',
         templateUrl: 'jenkins/views/jobForm.html',
         link: function (scope, elem, attrs) {
-          console.log("Recognized the jobDetail directive usage");
+          console.log('Recognized the jobDetail directive usage');
         }
       };
     });

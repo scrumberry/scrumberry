@@ -13,10 +13,8 @@ module.exports = function(config) {
         // base path, that will be used to resolve files and exclude
         basePath: basePath,
 
-
         // frameworks to use
         frameworks: ['jasmine'],
-
 
         // list of files / patterns to load in the browser
         files: _.flatten(_.values(assets.js)).concat([
@@ -30,7 +28,6 @@ module.exports = function(config) {
 
         ],
 
-
         // test results reporter to use
         // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
         //reporters: ['progress'],
@@ -43,8 +40,9 @@ module.exports = function(config) {
             // (these files will be instrumented by Istanbul)
             'public/js/controllers/*.js': ['coverage'],
             'public/js/services/*.js': ['coverage'],
-            'packages/*/public/*/controllers/*.js': ['coverage'],
-            'packages/*/public/*/services/*.js': ['coverage']
+            'packages/*/public/controllers/*.js': ['coverage'],
+            'packages/*/public/directives/*.js': ['coverage'],
+            'packages/*/public/services/*.js': ['coverage']
         },
 
         coverageReporter: {
@@ -55,19 +53,15 @@ module.exports = function(config) {
         // web server port
         port: 9876,
 
-
         // enable / disable colors in the output (reporters and logs)
         colors: true,
-
 
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
         logLevel: config.LOG_INFO,
 
-
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: true,
-
 
         // Start these browsers, currently available:
         // - Chrome

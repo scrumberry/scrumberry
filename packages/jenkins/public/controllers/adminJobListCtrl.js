@@ -39,7 +39,7 @@ angular.module('mean').controller('JobListController',
 
 	$rootScope.$on('JOB_UPDATED_EVENT', function(event, data) {
 	    var index = $scope.jobs.indexOf(data);
-	    if (index != -1) {
+	    if (index !== -1) {
 	        $scope.jobs[index].name = data.name;
 	        $scope.jobs[index].apiUrl = data.apiUrl;
 	        $scope.jobs[index].alarm = data.alarm;		        
