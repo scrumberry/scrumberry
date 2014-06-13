@@ -1,6 +1,6 @@
 # SCRUMBERRY
 
-Scrumberry is a simple application 
+Scrumberry is a simple application providing a set of functionalities for scrum teams (CI dashboard, events scheduler ...)
 
 It's designed for a Raspberry Pi hosting, based on [MEAN stack](http://mean.io/).
 
