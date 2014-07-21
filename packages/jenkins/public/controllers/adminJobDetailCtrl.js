@@ -20,9 +20,7 @@ angular.module('mean').controller('JobDetailsController', ['$scope','$rootScope'
 	
 	$scope.saveJob = function saveJob(job) {
 		if (job._id) {
-	        job.$update(function() {
-	        	$rootScope.$emit('JOB_UPDATED_EVENT',job);
-	        });			
+	        job.$update();			
 		} else {
 	        var newJob = new Jobs({
 	            name: job.name,

@@ -1,7 +1,7 @@
 'use strict';
 
 (function() {
-    // Articles Controller Spec
+    // Jenkins Controller Spec
     describe('Jenkins Plugin controllers', function() {
         describe('JobListController', function() {
             // The $resource service augments the response object with methods for updating and deleting the resource.
@@ -150,6 +150,81 @@
                              
             });            
 
+            it('$scope.jobs should contains the new emitted job', function () {
+                
+            	// SETUP
+        	    scope.jobs = [];
+            	var createdJob = function() {
+                    return {
+                    	_id: '525a8422f6d0f87f0e407a33',
+                        name: 'Scrumberry main build',
+                        urlApi: 'http://localhost:80/api'
+                    };
+                };                
+                
+                // TEST
+                rootScope.$emit('JOB_CREATED_EVENT', createdJob);
+                
+                // ASSERT
+                expect(scope.jobs.length).toEqual(1);
+                             
+            }); 
+            
+           it('$scope.jobs should not contains the deleted job anymore if exists', function () {
+                
+            	// SETUP
+             	var jobData = function() {
+                    return {
+                    	_id: '525a8422f6d0f87f0e407a33',
+                        name: 'Scrumberry main build',
+                        urlApi: 'http://localhost:80/api'
+                    };
+                };
+             	var ghostJob = function() {
+                    return {
+                    	_id: '525a8422f6d0f87f0e407a33',
+                        name: 'Non existing job',
+                        urlApi: 'http'
+                    };
+                };
+           	    scope.jobs = [jobData];
+           	    expect(scope.jobs.length).toEqual(1);
+ 
+                // TEST
+                rootScope.$emit('JOB_DELETED_EVENT', ghostJob);
+                
+                // ASSERT
+                expect(scope.jobs.length).toEqual(1);
+                
+                // TEST
+                rootScope.$emit('JOB_DELETED_EVENT', jobData);
+                
+                // ASSERT
+                expect(scope.jobs.length).toEqual(0);
+                             
+            });
+           
+           it('$scope.selectedJob should be the emitted job if deletion confirmation', function () {
+               
+           		// SETUP
+        	   scope.confirmation = false;
+        	   var jobData = function() {
+                   return {
+                   	_id: '525a8422f6d0f87f0e407a33',
+                       name: 'Scrumberry main build',
+                       urlApi: 'http://localhost:80/api'
+                   };
+               };
+               
+               // TEST
+               rootScope.$emit('CONFIRM_DELETE_EVENT', jobData);
+               
+               // ASSERT
+               expect(scope.confirmation).toEqual(false);
+               expect(scope.selectedJob).toEqualData(jobData);               
+                            
+           }); 
         });
     });
+    
 }());
