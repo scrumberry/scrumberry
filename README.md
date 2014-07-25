@@ -12,5 +12,8 @@ It's designed for a Raspberry Pi hosting, based on [MEAN stack](http://mean.io/)
 * NPM - Node.js package manage; should be installed when you install node.js.
 * Bower - Web package manager. Installing [Bower](http://bower.io/).
 
+## Installation
+Create an environment variable named SCRUMBERRY_DB with full MongoDB database path (e.g. 'mongodb://localhost/scrumberry')
+
 ## License
 [The MIT License](http://opensource.org/licenses/MIT)

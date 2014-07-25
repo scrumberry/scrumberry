@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = {
-    db: 'mongodb://localhost/mean-dev',
+    db: process.env.SCRUMBERRY_DB, //'mongodb://mongohost/mean-dev',
     app: {
-        name: 'MEAN - FullStack JS - Development'
+        name: 'Scrumberry - Development'
     },
     facebook: {
         clientID: 'APP_ID',
