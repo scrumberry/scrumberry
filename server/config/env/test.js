@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: 'mongodb://localhost/mean-test',
+    db: process.env.SCRUMBERRY_DB, //'mongodb://mongohost/mean-test',
     port: 3001,
     app: {
         name: 'Scrumberry - Test'
