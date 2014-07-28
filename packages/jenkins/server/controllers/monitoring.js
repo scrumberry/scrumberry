@@ -3,7 +3,8 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'), 
+	jobmodel = require('../models/job');
 
 /** =======================================
  *  Function declarations 
