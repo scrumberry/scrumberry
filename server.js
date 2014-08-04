@@ -34,6 +34,7 @@ exports = module.exports = app;
 /* =================================================================== *
  * Initializing cron jobs for JENKINS plugin                           *
  * =================================================================== */
+
 var io = require('socket.io')(8888);
 io = io.listen(server);
 console.log('Socket.io initialized');
