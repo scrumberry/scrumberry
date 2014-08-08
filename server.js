@@ -32,17 +32,7 @@ logger.init(app, passport, mongoose);
 exports = module.exports = app;
 
 /* =================================================================== *
- * Initializing cron jobs for JENKINS plugin                           *
+ * Initializing Socket.IO for Scrumberry                               *
  * =================================================================== */
-
-var io = require('socket.io')(8888);
-io = io.listen(server);
-console.log('Socket.io initialized');
-var cron = require('cron');
-var monitoring = require('./packages/jenkins/server/controllers/monitoring');
-var cronJob = cron.job('*/5 * * * * *', function(){
-		monitoring.checkJobs(io);
-}); 
-cronJob.start();
-console.log('Cron job started');
-/* =================================================================== */
+var io = require('socket.io')(8888).listen(server);
+exports.io = io;

@@ -2,7 +2,9 @@
   "name": "jenkins",
   "version": "0.0.1",
   "description": "Jenkins plugin for Scrumberry",
-  "author": "Scrumberry github organization",
+  "author": {
+	    "name": "Scrumberry"
+	  },
   "contributors": [
                    { "name": "Gilles Vivies", "mail": "gilles.vivies@gmail.com" }
                  ],  
