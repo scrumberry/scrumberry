@@ -84,11 +84,8 @@ angular.module('mean').controller('JobDetailsController', ['$scope','$rootScope'
 			         apiUrl: job.url,
 			         alarm: 'OFF',
 			         status: 'Unknown'
-			     });			
-			     newJob.$save(function(response) {
-			        	newJob._id = response._id;
-			        	$rootScope.$emit('JOB_CREATED_EVENT', newJob);
-			     });			
+			     });
+				 saveJob(newJob);		
 			}
 		}
 		$scope.showSetupForm = false;
@@ -102,6 +99,13 @@ angular.module('mean').controller('JobDetailsController', ['$scope','$rootScope'
 		$scope.selectedJob = data;
 		$scope.showSetupForm = true;		
 	});
+	
+	function saveJob(newJob) {
+	     newJob.$save(function(response) {
+	        	newJob._id = response._id;
+	        	$rootScope.$emit('JOB_CREATED_EVENT', newJob);
+	     });
+	}
 	
 }]);
 

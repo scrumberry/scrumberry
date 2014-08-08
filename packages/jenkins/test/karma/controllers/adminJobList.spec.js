@@ -77,7 +77,7 @@
             it('$scope.init() should call find() function', function() {
  
                 // SETUP
-                $httpBackend.expectGET('jobs').respond([{  }]);;
+                $httpBackend.expectGET('jobs').respond([{  }]);
 
                 // TEST
                 scope.initPage();

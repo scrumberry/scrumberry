@@ -3,11 +3,19 @@
 /*
  * Defining the Jenkins plugin package
  */
-var Module = require('meanio').Module, 
-	http = require('http'), 
+var Module = require('meanio').Module,  
 	cron = require('cron'), 
 	monitoring = require('./server/controllers/monitoring'), 
 	io = require('../../server').io;
+
+var initCrontab = function() {
+	var crontab = '*/5 * * * * *';
+	var scheduledJob = function() {
+		monitoring.checkJobs(io);
+	};
+	cron.job(crontab, scheduledJob).start();
+	console.log('Jenkins module cron job initialized');
+};
 
 var Jenkins = new Module('Jenkins');
 
@@ -29,12 +37,3 @@ Jenkins.register(function(app, auth, database) {
 
 	return Jenkins;
 });
-
-var initCrontab = function() {
-	var crontab = '*/5 * * * * *';
-	var scheduledJob = function() {
-		monitoring.checkJobs(io);
-	};
-	cron.job(crontab, scheduledJob).start();
-	console.log('Jenkins module cron job initialized');
-};

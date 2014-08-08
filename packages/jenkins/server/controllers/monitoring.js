@@ -4,8 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'), 
-	jobmodel = require('../models/job'),
-	remote = require('./jenkinsApi');
+	jenkinsApi = require('./jenkinsApi');
 
 /** =======================================
  *  Function declarations 
@@ -29,18 +28,18 @@ var sendSocketEvent = function(jobData, io) {
 };
 
 var defineJobStatus = function (job) {
-	var status = 'Aborted'
+	var status = 'Aborted';
 	if (job.lastCompletedBuild.number === job.lastFailedBuild.number) {
 		 status = 'Failed';
 	} else if (job.lastCompletedBuild.number === job.lastSuccessfulBuild.number) {
-		status = 'Success'
-	};
+		status = 'Success';
+	}
 	return status;
 };
 
 var getRemoteJob = function (job, checked) {
 	var jsonResp = '';	
-	remote.checkJob(job, function(resp) {	
+	jenkinsApi.checkJob(job, function(resp) {	
 		if (resp!=='') {
 			try {
 				jsonResp = JSON.parse(resp);
@@ -79,7 +78,7 @@ module.exports.checkJobs = function(io) {
 								if (jobData !== '') {							
 									job.lastBuild = jobData.lastBuild.number;
 									job.lastFailedBuild = jobData.lastFailedBuild.number;
-									status = defineJobStatus(jobData)
+									status = defineJobStatus(jobData);
 								} else {
 									console.error('Remote job '+job.name+' not found at '+job.apiUrl);
 									jobData = job;

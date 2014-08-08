@@ -5,7 +5,8 @@
  */
 var mongoose = require('mongoose'), 
 	Job = mongoose.model('Job'), 
-	_ = require('lodash');
+	_ = require('lodash'),
+	jenkinsAPI = require('./jenkinsApi');
 
 /**
  * List of Jobs
@@ -103,10 +104,8 @@ exports.job = function(req, res, next, id) {
 
 
 exports.getRemoteList = function(req, res) {
-	var url = req.query.url;
-	// Jenkins remote API dependency
-	var remote = require('./remote');	
-	remote.getRemoteJobs(url, function(resp) {	
+	var url = req.query.url;	
+	jenkinsAPI.getRemoteJobs(url, function(resp) {	
 		if (resp!=='') {
 			try {
 				res.send(resp);

@@ -1,16 +1,5 @@
 'use strict';
 
-module.exports.checkJob = function(job, callback) {
-	callRemoteJenkins(job.apiUrl, function(response) {
-		callback(response);
-	});
-};
-
-module.exports.getRemoteJobs = function(url, callback) {
-	callRemoteJenkins(url, function(response) {
-		callback(response);
-	});
-};
 
 var callRemoteJenkins = function(url, callback) {
 	var http = require('http');
@@ -27,4 +16,16 @@ var callRemoteJenkins = function(url, callback) {
 		console.error('Error connecting ' + url + ' : ' + e.message);
 	});
 	request.end();
+};
+
+module.exports.checkJob = function(job, callback) {
+	callRemoteJenkins(job.apiUrl, function(response) {
+		callback(response);
+	});
+};
+
+module.exports.getRemoteJobs = function(url, callback) {
+	callRemoteJenkins(url, function(response) {
+		callback(response);
+	});
 };

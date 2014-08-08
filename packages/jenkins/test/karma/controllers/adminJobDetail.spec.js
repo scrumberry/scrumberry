@@ -26,8 +26,8 @@
                 scope,
                 $httpBackend,
                 $stateParams,
-                $location,
-                JobListService;
+                $location;
+                //JobListService;
 
             // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
             // This allows us to inject a service but then attach it to a variable
@@ -132,6 +132,7 @@
                         alarm: 'ON'
                     };
                 };
+                /*
                 var responseJobData = function() {
                     return {
                         _id: '525cf20451979dea2c000001',
@@ -141,7 +142,7 @@
                         $promise : undefined, 
                         $resolved : true
                     };
-                };
+                };*/
                 var emitted = {
                         _id: '525cf20451979dea2c000001',
                         name: 'Scrumberry main build',
@@ -214,7 +215,7 @@
                 
            	
             	// TEST
-            	var res = scope.isJobAlreadySelected('http://localhost:80/api')
+            	var res = scope.isJobAlreadySelected('http://localhost:80/api');
             	// ASSERT
             	expect(res).toEqual(true);
             }));

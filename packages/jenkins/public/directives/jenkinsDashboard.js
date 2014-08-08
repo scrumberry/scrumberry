@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mean').directive('jenkinsDashboard', function () {
-	
+	var socket;
     return {
         restrict: 'E',
         replace: 'true',
@@ -11,7 +11,7 @@ angular.module('mean').directive('jenkinsDashboard', function () {
     		scope.alarmingJobs = [];
     		scope.alarmsCount = 0;
     		scope.jenkinsInError = false;
-    		var socket = io.connect();
+    		socket = io.connect(); // jshint ignore:line
     		
     		scope.addJobInAlarm = function (job) {
     			var index = scope.alarmingJobs.indexOf(job.name);

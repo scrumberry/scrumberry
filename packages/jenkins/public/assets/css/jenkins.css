@@ -1,13 +1,13 @@
 h1 {
 	font-size: 22px;
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin-top:0;
+	margin-bottom:0;
 	text-align: left;
 }
 h2 {
 	font-size: 14px;
-	margin-bottom: 0px;
-	margin-top: 0px;
+	margin-bottom:0;
+	margin-top:0;
 }
 li {
 	display: block;
@@ -32,10 +32,6 @@ li {
 }
 .job-widget {
 	float: left;
-}
-.jenkins-job-linedesc {
-	/* height: 26px;
-	 width: 328px; */
 }
 .jenkins-job-name {
 	float: left;
@@ -94,11 +90,9 @@ li {
 	background-image: url("../img/unknown.png");
 }
 .panel-primary > .panel-heading {
-	/* background-color: #000000; */
 	border-color: #000000;
 	color: #ffffff;
 	height: 42px;
-	/* width: 358px; */
 }
 .panel-primary {
 	border-color: #000000;
@@ -130,11 +124,6 @@ li {
 .modal {
 	display: block;
 }
-/*
-.modal-dialog {	
-	width: 750px;
-}
-*/
 .modal-header {
 	padding-bottom: 12px;
 }
@@ -144,11 +133,11 @@ li {
 .modal-header, .modal-body, .modal-footer {
 	border-bottom: none;
 	border-top: none;
-	padding-top: 0px;	
+	padding-top:0;	
 }
 .no-padding {
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left:0;
+	padding-right:0;
 }
 .form-line {
 	margin-bottom: 2px;
@@ -211,9 +200,6 @@ li {
 #form-jenkins-jobs {
 	margin-top: 12px;
 }
-#remote-job-list {
-	/*margin-top: 12x;*/
-}
 .jenkins-job-line {
 	padding-top: 2px;
 }
@@ -224,21 +210,14 @@ li {
 	font-size: 14px;
 	margin-left: 12px;
 }
-.jenkins-joblist-already-selected {
-	/* float: right; */
-}
 .select-job-disabled {
 	color: #c2c2c2;
-
 }
 .select-job-enabled {
 	color: #000000;	
 }
-.jenkins-job-hand {
-	
-}
 .jenkins-instruction-label {
-	margin-bottom: 0px;
+	margin-bottom:0;
 }
 .job-properties-instructions {
 	font-size: 14px;
@@ -246,8 +225,6 @@ li {
 .strong {
 	font-weight: bold;
 }
-
-
 /* ========= JENKINS DashBoard ============ */
 #jenkinsDashboard {
 	margin-bottom: 24px;
@@ -273,10 +250,10 @@ li {
 	float: right;	
 	height: 18px;
 	margin-right: 6px;
-	margin-left: 0px;
+	margin-left:0;
 	width: 18px;		
 }
 #jenkinsDashboard ul, ol {
 	margin-left: 4px;
-	padding-left: 0px;
+	padding-left:0;
 }
