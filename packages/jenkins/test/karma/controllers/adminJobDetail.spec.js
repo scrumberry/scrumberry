@@ -37,67 +37,50 @@
             	// mock of rootScope object
                 scope = $rootScope.$new();
                 rootScope = $rootScope;
-
                 // inject mock into controller as $scope
                 JobDetailsController = $controller('JobDetailsController', {
                 	$rootScope: rootScope,
                     $scope: scope
                 });
-
                 $stateParams = _$stateParams_;
-
                 $httpBackend = _$httpBackend_;
-
                 $location = _$location_;
 
             }));
 
             it('$scope should initialize without form displayed', function() {
-
                // TEST
-               scope.initForm();
-               
+               scope.initForm();             
                // ASSERT
                expect(scope.showSetupForm).toEqual(false);
-
              });
             
             it('$scope.addJob() should initialize selectedJob', function() {
-
                 // TEST
-                scope.addJob();
-                
+                scope.addJob();                
                 // ASSERT
                 expect(scope.selectedJob).not.toBe(null);
-
              });
             
             it('$scope.changeAlarm() should switch the alarm value', function() {
-
             	// SETUP
             	var jobData = {
                     	_id: '525a8422f6d0f87f0e407a33',
                         name: 'Scrumberry main build',
                         urlApi: 'http://localhost:80/api',
                         alarm: 'ON'
-                };
-                
+                };                
                 // TEST
-                scope.changeAlarm(jobData);
-                
+                scope.changeAlarm(jobData);                
                 // ASSERT
                 expect(jobData.alarm).toEqual('OFF');
-
                 // TEST
-                scope.changeAlarm(jobData);
-                
+                scope.changeAlarm(jobData);                
                 // ASSERT
-                expect(jobData.alarm).toEqual('ON');
-                
+                expect(jobData.alarm).toEqual('ON');                
             });
             
             it('$scope.saveJob() should update job if it was an identitfied job', inject(function(Jobs) {
-
             	// SETUP
                 var putJobData = function() {
                     return {
@@ -107,23 +90,18 @@
                         alarm: 'ON'
                     };
                 };
-                scope.showSetupForm = true;
-                
+                scope.showSetupForm = true;                
                 // mock job object from form
-                var job = new Jobs(putJobData());
-                
+                var job = new Jobs(putJobData());                
                 // test PUT happens correctly
                 $httpBackend.expectPUT(/jobs\/([0-9a-fA-F]{24})$/).respond();
                 // mock article in scope
                 scope.saveJob(job);
                 $httpBackend.flush();
-
                 expect(scope.showSetupForm).toEqual(false);
-
             }));          
             
             it('$scope.saveJob() should post job if it was a new job and emit a JOB_CREATED_EVENT event', inject(function(Jobs) {
-
             	// SETUP
                 var postJobData = function() {
                     return {
@@ -132,17 +110,6 @@
                         alarm: 'ON'
                     };
                 };
-                /*
-                var responseJobData = function() {
-                    return {
-                        _id: '525cf20451979dea2c000001',
-                        name: 'Scrumberry main build',
-                        urlApi: 'http://localhost:80/api',
-                        alarm: 'ON',
-                        $promise : undefined, 
-                        $resolved : true
-                    };
-                };*/
                 var emitted = {
                         _id: '525cf20451979dea2c000001',
                         name: 'Scrumberry main build',
@@ -150,19 +117,14 @@
                         alarm: 'ON'
                     };
                 scope.showSetupForm = true;
-                var job = new Jobs(postJobData());
-                
+                var job = new Jobs(postJobData());               
                 spyOn(rootScope, '$emit');
-                $httpBackend.expectPOST('jobs').respond(emitted);
-                
+                $httpBackend.expectPOST('jobs').respond(emitted);               
                 // TEST
                 scope.saveJob(job);
                 $httpBackend.flush();
-
                 // ASSERT
-                //expect(rootScope.$emit).toHaveBeenCalledWith('JOB_CREATED_EVENT', emitted);
                 expect(scope.showSetupForm).toEqual(false);
-
             }));
   
             /*
@@ -196,17 +158,17 @@
             }));
             */
 
-            it('$scope.isJobAlreadySelected() should return true if  an array with at least one job object ', inject(function(JobListService) {
+            /*
+            it('$scope.isJobAlreadySelected() should return true if an array with at least one job object', inject(function(JobListService) {
+
             	// SETUP
-            	
-            	JobListService = {
+             	JobListService = {
             			jobList: function() { return [{
                             _id: '525a8422f6d0f87f0e407a33',
                             name: 'Scrumberry main build',
                             urlApi: 'http://localhost:80/api'
                         }]; }
-            	};
-            	
+            	};           	
             	spyOn(JobListService, 'jobList').andReturn([{
                     _id: '525a8422f6d0f87f0e407a33',
                     name: 'Scrumberry main build',
@@ -218,7 +180,9 @@
             	var res = scope.isJobAlreadySelected('http://localhost:80/api');
             	// ASSERT
             	expect(res).toEqual(true);
+            	
             }));
+            */
         });
     });
     

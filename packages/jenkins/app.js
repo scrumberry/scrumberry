@@ -3,18 +3,23 @@
 /*
  * Defining the Jenkins plugin package
  */
-var Module = require('meanio').Module,  
-	cron = require('cron'), 
-	monitoring = require('./server/controllers/monitoring'), 
+var Module = require('meanio').Module,
+	mongoose = require('mongoose'),
+	cron = require('cron'),
+	monitoring = require('./server/controllers/monitoring'),
 	io = require('../../server').io;
 
-var initCrontab = function() {
-	var crontab = '*/5 * * * * *';
+var initCrontab = function(frequency) {
+	var crontab = '*/'+frequency+' * * * * *';
 	var scheduledJob = function() {
 		monitoring.checkJobs(io);
 	};
 	cron.job(crontab, scheduledJob).start();
-	console.log('Jenkins module cron job initialized');
+	console.log('Jenkins module cron job initialized with frequency of '+frequency);
+};
+
+var initFrequency = function(cb) {
+	return cb(monitoring.getFrequency());
 };
 
 var Jenkins = new Module('Jenkins');
@@ -32,8 +37,12 @@ Jenkins.register(function(app, auth, database) {
 	});
 
 	Jenkins.aggregateAsset('css', 'jenkins.css');
-
-	initCrontab();
+	
+	var db = mongoose.connection;
+	db.once('open', function callback () {
+		var params = require('./server/controllers/params')
+		params.getInitialFrequency( initCrontab );
+	});
 
 	return Jenkins;
 });

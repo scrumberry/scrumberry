@@ -62,7 +62,7 @@
                }]);
 
                // TEST
-               scope.find();
+               scope.findJobs();
                $httpBackend.flush();
 
                // ASSERT

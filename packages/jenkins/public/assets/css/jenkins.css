@@ -12,6 +12,14 @@ h2 {
 li {
 	display: block;
 }
+.params {
+	cursor: pointer;	
+	float: left;
+	font-size: 18px;
+	height: 16px;
+	margin-top: -44px;
+	width: 16px;	
+}
 .jenkins-not-connected,
 .jenkins-connected {
 	font-size: 9px;
@@ -28,7 +36,6 @@ li {
 	color: red;
 	float:right;
 	font-size: 24px;
-	/* margin-top: -32px; */
 }
 .job-widget {
 	float: left;
@@ -226,25 +233,25 @@ li {
 	font-weight: bold;
 }
 /* ========= JENKINS DashBoard ============ */
-#jenkinsDashboard {
+.jenkinsDashboard {
 	margin-bottom: 24px;
 	margin-top: 24px;
 	width: 280px;
 }
-#jenkinsDashboard .panel-heading {
+.jenkinsDashboard .panel-heading {
 	text-align: center;
 }
-#jenkinsDashboard li {
+.jenkinsDashboard li {
 	padding: 2px;
 }
-#jenkinsDashboard .info-msg {
+.jenkinsDashboard .info-msg {
 	margin-left: 6px;
 	margin-top: 12px;
 }
-#jenkinsDashboard .job-name {
+.jenkinsDashboard .job-name {
 	font-weight: normal;
 }
-#jenkinsDashboard .failed {
+.jenkinsDashboard .failed {
 	background-image: url(/jenkins/assets/img/failed.png);
 	background-size: 18px 18px;
 	float: right;	
@@ -253,7 +260,7 @@ li {
 	margin-left:0;
 	width: 18px;		
 }
-#jenkinsDashboard ul, ol {
+.jenkinsDashboard ul, ol {
 	margin-left: 4px;
 	padding-left:0;
 }

@@ -1,20 +1,57 @@
 'use strict';
 
 angular.module('mean').controller('JobListController', 
-		['$scope','$rootScope','$http','$location','Jobs','JobListService', 
-		 function($scope,$rootScope,$http,$location,Jobs,JobListService) {	
+		['$scope','$rootScope','$http','$location','Jobs','JobListService','Params', 
+		 function($scope,$rootScope,$http,$location,Jobs,JobListService,Params) {	
 	
 	$scope.initPage = function initPage() {
-		$scope.find();
+		$scope.findJobs();
 	};
 	
-	$scope.find = function find() {
+	$scope.findJobs = function findJobs() {
 	    Jobs.query(function(jobs) {
 	    	$scope.jobs = jobs;
 	    	JobListService.set(jobs);
 	    });
 	};
 
+	$scope.findParams = function findParams() {
+		Params.query(function(params) {
+	    	if (params.length>0) {
+				$scope.params = params;	    		
+	    	} else {
+	    		$scope.params = [{code:'FREQUENCY',name:'Frequency in seconds', value:'15'}];
+	    	}
+	    });
+	};
+	
+	$scope.changeSettings = function changeSettings() {
+		$scope.findParams();		
+		$scope.showSettingsForm = true;
+	};
+	
+	$scope.saveParam = function saveParam(param) {
+		if (param._id) {
+			param.$update();
+		} else {
+			var newParam = new Params({
+				code: param.code,
+				name: param.name,
+				value: param.value
+			});
+	        newParam.$save(function(response) {
+	        	newParam._id = response._id;
+	        });		
+		}
+	};
+
+	$scope.saveSettings = function saveSettings() {
+		for (var i= 0; i < $scope.params.length ; i++) {
+			var current = $scope.params[i];
+			$scope.saveParam(current);
+		}
+		$scope.showSettingsForm = false;
+	};
 	// -------------- Event emitters --------------
 	
 	$scope.confirmRemoveJob = function confirmRemoveJob(job) {

@@ -8,9 +8,11 @@
 	<h1>Managed Jenkins jobs</h1>
 	<section data-ng-controller="JobDetailsController" data-ng-init="initForm()">
 		<nav class="command-bar"><button type="button" ng-click="addJob()" class="btn btn-primary command-button">Add a job</button></nav>
-		<jobdetail></jobdetail>		
+		<jobdetail></jobdetail>	
 	</section>
-	<section data-ng-controller="JobListController"	data-ng-init="initPage()">			
+	<section data-ng-controller="JobListController"	data-ng-init="initPage()">
+		<nav type="button" class="params" ng-click="changeSettings()"><div class="glyphicon glyphicon-cog"></div></nav>	
+		<settings></settings>		
 		<main class="container-fluid main-content">
 			<confirm></confirm>
 			<ul class="row">

@@ -1,0 +1,32 @@
+<div id="settingsForm" ng-show="showSettingsForm" class="modal" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="modal-title">
+					<button class="close" ng-click="showSettingsForm = false" data-dismiss="modal">x</button>
+					<h3>Settings</h3>
+				</div>
+			</div>
+			<div class="modal-body">
+				<ul class="row">
+					<li ng-repeat="param in params">
+						<div class="form-inline">
+							<label class="form-line" id="job-name">{{param.name}} :</label>
+							<div class="form-group form-line">
+								<div class="col-xs-6 no-padding">
+									<input id="{{param.code}}" class="form-control" ng-model="param.value" />
+								</div>
+							</div>
+						</div>					
+					</li>
+				</ul>	
+			</div>
+			<div class="modal-footer">
+				<div>
+					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="showSettingsForm = false">Close</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveSettings()">Save</button>								
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

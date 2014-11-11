@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('mean').controller('JobDetailsController', ['$scope','$rootScope','$http','$location','Jobs','RemoteJenkins','JobListService', function($scope,$rootScope,$http,$location,Jobs,RemoteJenkins,JobListService) {
+angular.module('mean').controller('JobDetailsController', ['$scope','$rootScope','$http','$location','Jobs','RemoteJenkins','JobListService', 
+                                                           function($scope,$rootScope,$http,$location,Jobs,RemoteJenkins,JobListService) {
 
 	$scope.initForm = function initForm() {
 		$scope.showSetupForm = false;
@@ -12,7 +13,7 @@ angular.module('mean').controller('JobDetailsController', ['$scope','$rootScope'
 		$scope.selectedJob = {name:'',apiUrl:'http://',alarm:'OFF',status:'Unknown'};
 		$scope.showSetupForm = true;
 		$scope.jenkinsJobList = {};
-	};	
+	};
 	
 	$scope.changeAlarm = function changeAlarm(job) {
 		job.alarm = (job.alarm === 'ON' ? 'OFF' : 'ON');

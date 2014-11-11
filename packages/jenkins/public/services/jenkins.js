@@ -10,6 +10,17 @@ angular.module('mean').factory('Jobs', ['$resource', function($resource) {
     });	
 }]);
 
+angular.module('mean').factory('ParamsByCode', ['$http', function($http) {	
+	var service = {};
+	service.find = function(code, onSuccess) {
+		$http({ method: 'GET', 
+			url: '/paramByCode', 
+			params: {code : code } })
+		.success(onSuccess);
+	};	
+	return service;
+}]);
+
 angular.module('mean').factory('RemoteJenkins', ['$http', function($http) {	
 	var service = {};
 	service.getJobList = function(remoteUrl, onSuccess) {
@@ -32,3 +43,13 @@ angular.module('mean').factory('JobListService', function() {
 	};	
 	return service;
 });
+
+angular.module('mean').factory('Params', ['$resource', function($resource) {	
+    return $resource('jenkinsParams/:paramId', {
+        paramId: '@_id'
+    }, {
+        update: {
+            method: 'PUT'
+        }
+    });	
+}]);

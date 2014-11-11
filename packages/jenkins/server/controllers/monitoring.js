@@ -9,6 +9,7 @@ var mongoose = require('mongoose'),
 /** =======================================
  *  Function declarations 
  ** ======================================= */
+
 var saveJobStatus = function(job, status) {
 	if (job.status !== 'Failed' && status === 'Failed') {
 		job.lastFailedBuild = job.lastBuild.number;
@@ -65,7 +66,7 @@ module.exports.checkJobs = function(io) {
 		function(err, jobs) {
 			if (err) {
 				// TODO Handle error
-				console.error('Cannot retrieve persisted jobs');
+				console.error('Can not retrieve persisted jobs');
 			} else {
 				(function(){
 					var rank = 0;
@@ -107,3 +108,16 @@ module.exports.checkJobs = function(io) {
 			}
 		});
 };
+
+module.exports.getInitialFrequency = function( callback ) {
+	var JenkinsParam = mongoose.model('JenkinsParam');
+	JenkinsParam.findOne({code: 'FREQUENCY'}).select('value').exec(function(err, param) {
+		if (err) {
+			console.error('Can not retrieve frequency : '+err);
+		}
+		if (!param) {
+			console.error('Failed to load initial frequency parameter');
+		}
+		callback(param.value);
+	});
+}

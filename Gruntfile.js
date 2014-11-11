@@ -76,7 +76,8 @@ module.exports = function(grunt) {
                     nodeArgs: ['--debug'],
                     delayTime: 1,
                     env: {
-                        PORT: require('./server/config/config').port
+                        PORT: require('./server/config/config').port,
+                        SCRUMBERRY_DB: 'mongodb://localhost/mean-dev'
                     },
                     cwd: __dirname
                 }
@@ -88,16 +89,29 @@ module.exports = function(grunt) {
                 logConcurrentOutput: true
             }
         },
+        //mochaTest: {
+        //    options: {
+        //        reporter: 'spec',
+        //        require: 'server.js'
+        //    },
+        //    src: ['test/mocha/**/*.js', 'packages/**/test/mocha/**/*.js']
+        //},
         mochaTest: {
             options: {
-                reporter: 'spec',
-                require: 'server.js'
+              reporter: 'spec',
+              require: [
+                'server.js',
+                function() {
+                  require('meanio/lib/util').preload(__dirname + '/packages/**/server', 'model');
+                }
+              ]
             },
-            src: ['test/mocha/**/*.js', 'packages/**/test/mocha/**/*.js']
-        },
+            src: ['packages/**/server/tests/**/*.js']
+          },        
         env: {
             test: {
-                NODE_ENV: 'test'
+                NODE_ENV: 'test',
+                SCRUMBERRY_DB: 'mongodb://localhost/mean-dev'
             }
         },
         karma: {
