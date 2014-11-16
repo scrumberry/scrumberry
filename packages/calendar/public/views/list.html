@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Managed calendars</title>
+	</head>
+	<body>
+  		<h1>Calendars</h1>
+		<section data-ng-controller="CalendarDetailsController" data-ng-init="initForm()">
+			<nav class="command-bar"><button type="button" ng-click="addCalendar()" class="btn btn-primary command-button">Add a calendar</button></nav>
+			<calendar-detail></calendar-detail>	
+		</section>  		
+		<section data-ng-controller="CalendarController" data-ng-init="initPage()">		
+			<main class="container-fluid main-content">
+				<calendar-confirm></calendar-confirm>
+				<ul class="row">
+					<li ng-repeat="calendar in calendars">
+						<div class="col-sm-12 calendar-widget">
+							<article class="panel panel-primary">
+								<header class="panel-heading">
+									<h2 class="calendar-title">{{ calendar.title }}</h2>
+								</header>
+								<section class="panel-body">
+									<dl class="calendar-linedesc">
+										<dt class="calendar-label">Description :</dt>
+										<dd class="calendar-value">{{ calendar.description }}</dd>
+									</dl>
+									<dl class="calendar-linedesc">
+										<dt class="calendar-label">External ID :</dt>
+										<dd class="calendar-value">{{ calendar.externalId }}</dd>
+									</dl>
+									<dl class="calendar-linedesc">
+										<dt class="calendar-label">External account :</dt>
+										<dd class="calendar-value">{{ calendar.externalAccount }}</dd>
+									</dl>
+									<dl class="calendar-linedesc">
+										<dt class="calendar-label">Location :</dt>
+										<dd class="calendar-value">{{ calendar.location }}</dd>
+									</dl>
+									<dl class="calendar-linedesc">
+										<dt class="calendar-label">TimeZone :</dt>
+										<dd class="calendar-value">{{ calendar.timezone }}</dd>
+									</dl>
+									<dl class="jenkins-job-linedesc">
+										<nav type="button" ng-click="confirmRemoveCalendar(calendar)" class="glyphicon glyphicon-trash calendar-setup calendar-indicators"></nav>
+										<nav type="button" ng-click="editCalendar(calendar)" data-toggle="modal" 
+											data-target="#calendarForm" class="glyphicon glyphicon-edit calendar-setup calendar-indicators">
+										</nav>
+									</dl>																							
+								</section>
+							</article>
+						</div>
+					</li>
+				</ul>
+			</main>
+		
+		</section>
+	</body>	
+</html>

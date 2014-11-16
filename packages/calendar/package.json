@@ -1,0 +1,18 @@
+{
+  "name": "calendar",
+  "version": "0.0.1",
+  "description": "Calendar plugin for Scrumberry",
+  "author": {
+	    "name": "Scrumberry"
+	  },
+  "contributors": [
+        { "name": "Gilles Vivies", "mail": "gilles.vivies@gmail.com" }
+      ],  
+  "mean": "0.3.3",
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.4.x"
+  },
+  "dependencies": {},
+  "license": "MIT"
+}

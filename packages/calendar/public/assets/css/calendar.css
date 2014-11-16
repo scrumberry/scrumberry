@@ -1,0 +1,67 @@
+h1 {
+	font-size: 22px;
+	margin-top:0;
+	margin-bottom:0;
+	text-align: left;
+}
+
+.panel-primary > .panel-heading {
+	border-color: #000000;
+	color: #ffffff;
+	height: 42px;
+}
+.panel-primary {
+	border-color: #000000;
+}
+.panel-body {
+	padding: 10px;
+}
+.calendar-widget {
+	float: left;
+}
+.calendar-title {
+	float: left;
+	height: 26px;
+}
+.command-bar {
+	float: left;
+	height: 36px;
+	margin-bottom: 12px;
+	margin-top: 8px;
+	width: 100%;
+}
+.command-button {
+	float: right;
+}
+.btn-remove-calendar {
+	float: left;
+}
+.calendarForm a, 
+.calendarForm a:hover, 
+.calendarForm a:active {
+	cursor: pointer;
+	text-decoration: none
+}
+.calendar-linedesc {
+	float: left;
+	width: 100%;
+}
+.calendar-label {
+	float: left;
+	font-size: 12px;
+	width: 80px;
+}
+.calendar-value {
+	float: left;
+	font-size: 12px;
+	padding-top: 1px;
+	width: 408px;
+}
+.calendar-setup {
+	cursor: pointer;
+	font-size: 18px;
+	margin-right: 12px;
+}
+.calendar-indicators {
+	float: right;	
+}

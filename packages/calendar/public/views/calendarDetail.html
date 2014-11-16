@@ -1,0 +1,65 @@
+<div id="calendarForm" ng-show="showSetupForm" class="modal calendarForm" role="dialog" tabindex="-1"	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="modal-title">
+					<button class="close" ng-click="showSetupForm = false" data-dismiss="modal">x</button>
+					<h3>{{(updateForm) ?'Calendar properties':'Add a new calendar'}}</h3>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div id="form-calendar-properties" class="form-inline">
+					<label class="form-line" id="calendar-title">Title :</label>
+					<div class="form-group form-line">
+						<div class="col-xs-12 no-padding">
+							<input id="calendar-title" class="form-control"
+								ng-model="selectedCalendar.title" />
+						</div>
+					</div>
+					<label class="form-line" class="">Description :</label>
+					<div class="form-group form-line">
+						<div class="col-xs-12 no-padding">
+							<input class="form-control" ng-model="selectedCalendar.description"	 />
+						</div>
+					</div>
+					<div class="form-group form-line">
+						<label class="col-xs-6 no-padding">External ID :</label>
+						<label class="col-xs-6 no-padding">External account :</label>
+					</div>	
+					<div class="form-group form-line">
+						<div class="col-xs-6 no-padding">
+							<input class="form-control" ng-model="selectedCalendar.externalId"	
+								placeholder="Enter Google calendar ID (eg. xx@group.calendar.google.com)" />
+						</div>
+						<div class="col-xs-6 no-padding">
+							<input class="form-control" ng-model="selectedCalendar.externalAccount"	
+								placeholder="Enter Google account" />
+						</div>
+					</div>
+					<div class="form-group form-line">
+						<label class="col-xs-6 no-padding">Location :</label>
+						<label class="col-xs-6 no-padding">Timezone :</label>
+					</div>						
+					<div class="form-group form-line">
+						<div class="col-xs-6 no-padding">
+							<input class="form-control" ng-model="selectedCalendar.location" />
+						</div>
+						<div class="col-xs-6 no-padding">
+							<input class="form-control" ng-model="selectedCalendar.timezone" />
+						</div>
+					</div>								
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div>
+					<div ng-show="updateForm">
+						<button type="button" ng-show="removeConfirmationLevel==0" class="btn btn-warning btn-remove-calendar" ng-click="confirmRemoval()">Remove</button>
+						<button type="button" ng-show="removeConfirmationLevel==1" class="btn btn-danger btn-remove-calendar" ng-click="removeCalendar(selectedCalendar)">Sure ? Remove it ?</button>
+					</div>	
+					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="showSetupForm = false">Close</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveCalendar(selectedCalendar)">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
