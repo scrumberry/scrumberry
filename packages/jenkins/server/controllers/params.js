@@ -99,12 +99,15 @@ module.exports.param = function(req, res, next, id) {
 
 module.exports.getInitialFrequency = function( callback ) {
 	params.findOne({code: 'FREQUENCY'}).select('value').exec(function(err, param) {
+		var value = '20';
 		if (err) {
 			console.error('Can not retrieve frequency : '+err);
 		}
 		if (!param) {
-			console.error('Failed to load initial frequency parameter');
+			console.error('Failed to load initial frequency parameter');			
+		} else {
+			value = param.value;
 		}
-		callback(param.value);
+		callback(value);
 	});
 }
